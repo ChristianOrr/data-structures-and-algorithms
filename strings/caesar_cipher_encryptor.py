@@ -13,8 +13,20 @@ string = "xyz"
 key = 2
 Sample Output
 "zab"
-"""
 
+Solution 1
+Time Complexity: O(n), space complexity: O(n)
+Strategy:
+Create an alphabet string and convert it to a list. Create an empty new_sting.
+Iterate over the letters of the string. Find the letter_index in the alphabet list and increment it by key.
+Make sure the letter_index doesn't go out of bounds by using modulo.
+Get the new_letter in alphabet using the valid letter_index and add it to the new_string.
+After the loop return the new_string.
+"""
+import unittest
+
+
+# Solution 1
 def caesarCipherEncryptor(string, key):
     alphabet = list('abcdefghijklmnopqrstuvwxyz')
     alphabet_length = len(alphabet)
@@ -28,8 +40,7 @@ def caesarCipherEncryptor(string, key):
         new_string += new_letter
     return new_string
 
-if __name__ == "__main__":
-    test = "xyz"
-    key = 2
-    out = caesarCipherEncryptor(test, key)
-    print(f"The result is : {out}")
+
+class TestProgram(unittest.TestCase):
+    def test_1(self):
+        self.assertEqual(caesarCipherEncryptor("xyz", 2), "zab")

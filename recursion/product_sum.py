@@ -12,18 +12,37 @@ the depth of the inner array in [[]] is 2; the depth of the innermost array in [
 
 Therefore, the product sum of [x, y] is x + y;
 the product sum of [x, [y, z]] is x + 2 * (y + z); the product sum of [x, [y, [z]]] is x + 2 * (y + 3z).
+
+Sample Input
+array = [5, 2, [7, -1], 3, [6, [-13, 8], 4]]
+Sample Output
+12 // calculated as: 5 + 2 + 2 * (7 - 1) + 3 + 2 * (6 + 3 * (-13 + 8) + 4)
+
+Solution 1
+Time Complexity: O(n), space complexity: O(d)
+Strategy:
+Solve using depth-first search.
+Initialize the total to 0 and loop through all the array elements.
+If the element is an integer add it to the total,
+else recursively call product sum on the element and increase the depth then add the returned value to total.
+After the loop multiply the depth by total and return it.
 """
 import unittest
 
+# # Template
+# def productSum(array):
+#     pass
 
+
+# Solution 1
 def productSum(array, depth=1):
-    sum = 0
+    total = 0
     for element in array:
         if type(element) == int:
-            sum += element
+            total += element
         else:
-            sum += productSum(element, depth + 1)
-    return sum * depth
+            total += productSum(element, depth + 1)
+    return total * depth
 
 
 

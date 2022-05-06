@@ -18,10 +18,34 @@ graph = A
     I   J   K
 Sample Output
 ["A", "B", "E", "F", "I", "J", "C", "D", "G", "K", "H"]
+
+Solution 1
+Time Complexity: O(v + e), space complexity: O(v)
+Strategy:
+Recursive, go deep, then wide in the tree.
+Add current nodes name to the array.
+Iterate over all the children and call dfs on all the children nodes.
+After the loop return the array.
+
 """
 import unittest
 
 
+# # Template
+# class Node:
+#     def __init__(self, name):
+#         self.children = []
+#         self.name = name
+#
+#     def addChild(self, name):
+#         self.children.append(Node(name))
+#         return self
+#
+#     def depthFirstSearch(self, array):
+#         pass
+
+
+# Solution 1
 class Node:
     def __init__(self, name):
         self.children = []

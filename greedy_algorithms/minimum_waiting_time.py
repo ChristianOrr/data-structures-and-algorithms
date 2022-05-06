@@ -23,19 +23,46 @@ Sample Input
 queries = [3, 2, 1, 2, 6]
 Sample Output
 17
+
+Solution 1
+Time Complexity: O(nlog(n)), space complexity: O(n)
+Strategy:
+Sort the array, then remove the last element.
+Accumulate the array, then sum up the accumulation and return the sum.
+
+Solution 2
+Time Complexity: O(nlog(n)), space complexity: O(1)
+Strategy:
+Sort the array. Keep track of total_waiting_time and num_queries_left.
+Iterate over the array and add num_queries_left * current_waiting_time to total_waiting_time.
+Return the total_waiting_time after the loop.
+
 """
 import unittest
 
 
+# Solution 1
 def minimumWaitingTime(queries):
-    sorted_queries = sorted(queries)
-    waiting_times = [0]
-    waiting_time = 0
-    for i in range(len(queries) - 1):
-        waiting_time += sorted_queries[i]
-        waiting_times.append(waiting_time)
+    queries.sort()
+    queries.pop(-1)
 
-    return sum(waiting_times)
+    accum = [sum(queries[:i + 1]) for i in range(len(queries))]
+
+    return sum(accum)
+
+
+# Solution 2
+def minimumWaitingTime(queries):
+    queries.sort()
+    total_waiting_time = 0
+    queries_left = len(queries) - 1
+
+    for current_waiting_time in queries:
+        total_waiting_time += current_waiting_time * queries_left
+        queries_left -= 1
+
+    return total_waiting_time
+
 
 
 class TestProgram(unittest.TestCase):
