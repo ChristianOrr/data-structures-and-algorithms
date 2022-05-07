@@ -15,12 +15,13 @@ true // it's written the same forward and backward
 Solution 1
 Time complexity: O(n), Space complexity: O(n)
 Strategy:
-Reverse the string. If string == reversed_string return True, else False.
+Reverse the string. Return true if the string is equal to its reverse.
 
 Solution 2
 Time complexity: O(n), Space complexity: O(1)
 Strategy:
-Use while loop with double pointer on left and right ends. If left_value != right_value return False else
+Two pointers. Use while loop with pointers on left and right ends.
+If left and right values are not equal return False else
 increment left index and decrement right index and continue.
 Return True if the loop completes without finding a miss-match.
 

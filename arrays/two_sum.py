@@ -38,6 +38,9 @@ Sort the input array in-place. Create while loop and place left_pointer = 0 inde
 last index. If left_pointer + right_pointer = target return the answer, else check if it's less or greater than target.
 If less increment left_pointer, if greater decrement right_pointer and continue while loop.
 Return False if it loops through all elements.
+
+Video:
+https://www.youtube.com/watch?v=KLlXCFG5TnA&ab_channel=NeetCode
 """
 import unittest
 

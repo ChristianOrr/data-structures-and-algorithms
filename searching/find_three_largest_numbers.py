@@ -11,23 +11,35 @@ Sample Input
 array = [141, 1, 17, -7, -17, -27, 18, 541, 8, 7, 7]
 Sample Output
 [18, 141, 541]
+
+Solution 1
+Time Complexity: O(n), space complexity: O(1)
+Strategy:
+Initialize the three_largest = [None, None, None]
+Traverse the array and compare the current number to the three largest numbers.
+If the current number is greater than one of the three largest, then pop the smallest number off and
+insert the number into its correct position.
+After the loop return the three_smallest array.
 """
 import unittest
 
-
+# Solution 1
 def findThreeLargestNumbers(array):
-    three_largest = sorted(array[0:3])
-    for i in range(3, len(array)):
-        new_value = array[i]
-        if new_value > three_largest[0]:
+    three_largest = [None, None, None]
+
+    for num in array:
+        if three_largest[2] is None or three_largest[2] < num:
             three_largest.pop(0)
-            if new_value > three_largest[-1]:
-                three_largest.append(new_value)
-            elif new_value > three_largest[-2]:
-                three_largest.insert(1, new_value)
-            else:
-                three_largest.insert(0, new_value)
+            three_largest.append(num)
+        elif three_largest[1] is None or three_largest[1] < num:
+            three_largest.pop(0)
+            three_largest.insert(1, num)
+        elif three_largest[0] is None or three_largest[0] < num:
+            three_largest.pop(0)
+            three_largest.insert(0, num)
+
     return three_largest
+
 
 
 class TestProgram(unittest.TestCase):
