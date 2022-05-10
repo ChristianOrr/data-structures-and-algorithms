@@ -1,5 +1,5 @@
 """
-medium
+easy
 
 Write a function that takes in a string made up of brackets ((, [, {, ), ], and }) and other optional characters.
 The function should return a boolean representing whether the string is balanced with regards to brackets.
@@ -14,44 +14,35 @@ Sample Input
 string = "([])(){}(())()()"
 Sample Output
 true // it's balanced
+
+Solution 1
+Time complexity: O(n), Space complexity: O(n)
+Strategy:
+Create a stack (list) to store all the opening brackets.
+Create a hash-map mapping the closing brackets to the correct opening brackets.
+When an opening bracket is encountered add it to the stack.
+When a closing bracket is found, check if its opening bracket is at the top of the stack.
+If it is, then pop it off the stack and continue, else return False.
+At the end of the loop if the stack is empty return True, else return False.
 """
 import unittest
 
-class MinMaxStack:
-    def __init__(self):
-        self.array = []
-
-    def peek(self):
-        return self.array[-1]
-
-    def pop(self):
-        if len(self.array) > 0:
-            removed_bracket = self.array.pop(-1)
-        else:
-            removed_bracket = ""
-
-        return removed_bracket
-
-    def push(self, bracket):
-        self.array.append(bracket)
-
 
 def balancedBrackets(string):
-    brackets = MinMaxStack()
-    open = ["{", "[", "("]
-    close = ["}", "]", ")"]
-    for bracket in string:
-        if bracket in open:
-            brackets.push(bracket)
-        elif bracket in close:
-            opening_bracket = brackets.pop()
-            bracket_index = close.index(bracket)
-            if opening_bracket != open[bracket_index]:
+    stack = []
+    bracket_map = {")": "(", "]": "[", "}": "{"}
+
+    for brace in string:
+        if brace in bracket_map.keys():
+            if len(stack) > 0 and bracket_map[brace] == stack[-1]:
+                stack.pop()
+            else:
                 return False
-    if len(brackets.array) == 0:
-        return True
-    else:
-        return False
+        elif brace in bracket_map.values():
+            stack.append(brace)
+
+    return len(stack) == 0
+
 
 
 class TestProgram(unittest.TestCase):

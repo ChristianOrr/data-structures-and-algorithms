@@ -1,5 +1,5 @@
 """
-hard
+easy
 
 Write a function that takes in the head of a Singly Linked List, reverses the list in place
 (i.e., doesn't create a brand new list), and returns its new head.
@@ -14,6 +14,20 @@ Sample Input
 head = 0 -> 1 -> 2 -> 3 -> 4 -> 5 // the head node with value 0
 Sample Output
 5 -> 4 -> 3 -> 2 -> 1 -> 0 // the new head node with value 5
+
+Solution 1
+Time Complexity: O(n), space complexity: O(1)
+Strategy:
+Keep track of three consecutive nodes, current, next and next.next.
+Initialize the current to None and next to the head of the linked list.
+Iterate through the linked list while the next node is not None.
+Store the next.next node in a temp variable before breaking connection to it.
+Then reverse the connection and let next.next = current.
+Then shift the current and next pointers over before performing the following iteration.
+
+
+Video:
+https://www.youtube.com/watch?v=G0_I-ZF0S38&ab_channel=NeetCode
 """
 import unittest
 
@@ -57,7 +71,7 @@ class LinkedList(LinkedList):
 
 
 class TestProgram(unittest.TestCase):
-    def test_case_1(self):
+    def test_1(self):
         test = LinkedList(0).addMany([1, 2, 3, 4, 5])
         result = reverseLinkedList(test).getNodesInArray()
         expected = LinkedList(5).addMany([4, 3, 2, 1, 0]).getNodesInArray()

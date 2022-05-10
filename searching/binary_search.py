@@ -15,9 +15,10 @@ Solution 1
 Time Complexity: O(log(n)), space complexity: O(log(n))
 Strategy:
 Recursion, use three pointers for left, right and middle of the array.
-If middle_number == target return middle, elif target < middle_number set right = middle - 1.
+Base case: Return -1 if left index is greater than right index.
+If middle_number is equal target return middle, elif target less than middle_number set right = middle - 1.
 Else set left = middle + 1.
-Base case is return -1 if left > right.
+
 
 
 Solution 2
@@ -28,6 +29,9 @@ Loop while left <= right.
 If middle_number == target return middle, elif target < middle_number set right = middle - 1.
 Else set left = middle + 1.
 If loop finishes return -1.
+
+Video:
+https://www.youtube.com/watch?v=s4DPM8ct1pI&ab_channel=NeetCode
 """
 import unittest
 
