@@ -27,6 +27,16 @@ else link prev to list2 and shift prev onto list2, then shift list2, then link p
 If list1 completes before list2, then link prev to list2.
 Then return the list1 head.
 
+Solution 2
+Time Complexity: O(n + m), space complexity: O(n + m)
+Strategy:
+Recursive. Create recursive helper function with three pointers, list1, list2 and prev. Merge list2 into list1.
+Base Case1: list1 is Null. Link prev to list2 and return.
+Base Case2: list2 is Null. Return.
+If list1 is less than list2, then shift list1 and prev, and pass the lists to the recursive call.
+else link prev to list2 and shift prev onto list2, then shift list2, then link prev back to list1.
+After the recursive call return the list1's head.
+
 Video:
 https://www.youtube.com/watch?v=XIdigk956u0&ab_channel=NeetCode
 """
@@ -60,30 +70,6 @@ def mergeLinkedLists(headOne, headTwo):
         prev.next = list2
 
     return head.next
-
-
-# def mergeLinkedLists(headOne, headTwo):
-#
-#     if headOne.value > headTwo.value:
-#         main = headTwo
-#         secondary = headOne
-#     else:
-#         main = headOne
-#         secondary = headTwo
-#
-#     head = main
-#     while main.next is not None and secondary is not None:
-#         if secondary.value < main.next.value:
-#             temp = main.next
-#             secondary_temp = secondary.next
-#             main.next = secondary
-#             main.next.next = temp
-#             secondary = secondary_temp
-#         main = main.next
-#
-#     if secondary is not None:
-#         main.next = secondary
-#     return head
 
 
 

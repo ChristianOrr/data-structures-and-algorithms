@@ -30,6 +30,9 @@ Increment the right pointer each step. Check if the right value is less than the
 If it is then move the left pointer into the rights position, else
 update the max profit if it is greater than the current profit.
 After the loop return the max profit.
+
+Video:
+https://www.youtube.com/watch?v=1pkOgXD63yU&ab_channel=NeetCode
 """
 import unittest
 

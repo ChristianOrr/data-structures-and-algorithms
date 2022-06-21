@@ -24,11 +24,14 @@ When an opening bracket is encountered add it to the stack.
 When a closing bracket is found, check if its opening bracket is at the top of the stack.
 If it is, then pop it off the stack and continue, else return False.
 At the end of the loop if the stack is empty return True, else return False.
+
+Video:
+https://www.youtube.com/watch?v=WTzjTskDFMg&ab_channel=NeetCode
 """
 import unittest
 
 
-def balancedBrackets(string):
+def isValid(string):
     stack = []
     bracket_map = {")": "(", "]": "[", "}": "{"}
 
@@ -47,16 +50,16 @@ def balancedBrackets(string):
 
 class TestProgram(unittest.TestCase):
     def test_1(self):
-        self.assertEqual(balancedBrackets("([])(){}(())()()"), True)
+        self.assertEqual(isValid("([])(){}(())()()"), True)
 
     def test_2(self):
-        self.assertEqual(balancedBrackets(")[]}"), False)
+        self.assertEqual(isValid(")[]}"), False)
 
     def test_3(self):
-        self.assertEqual(balancedBrackets("()[]{}{"), False)
+        self.assertEqual(isValid("()[]{}{"), False)
 
     def test_4(self):
-        self.assertEqual(balancedBrackets("[((([])([]){}){}){}([])[]((())"), False)
+        self.assertEqual(isValid("[((([])([]){}){}){}([])[]((())"), False)
 
     def test_5(self):
-        self.assertEqual(balancedBrackets("(z)"), True)
+        self.assertEqual(isValid("(z)"), True)

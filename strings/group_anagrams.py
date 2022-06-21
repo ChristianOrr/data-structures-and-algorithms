@@ -12,7 +12,28 @@ Sample Input
 words = ["yo", "act", "flop", "tac", "foo", "cat", "oy", "olfp"]
 Sample Output
 [["yo", "oy"], ["flop", "olfp"], ["act", "tac", "cat"], ["foo"]]
+
+Solution 1
+Time complexity: O(w * n * log(n) + n * w * log(w)), Space complexity: O(w * n) -
+w: num words, n: length of the longest word.
+Strategy:
+Sort all the words and add them to a list in the same order as the unsorted list.
+Create hash map with the keys as the sorted words and values are a list of all its unsorted anagrams.
+Iterate over the words and add the anagrams to the hash map.
+After the loop return all the hash map values, which will contain the lists of grouped anagrams.
+
+Solution 2
+Time complexity: O(w * n * log(n)), Space complexity: O(w * n) -
+w: num words, n: length of the longest word.
+Strategy:
+Create hash map with the keys as the sorted words and values are a list of all its unsorted anagrams.
+Iterate over the words and add the sorted word/anagrams to the hash map.
+After the loop return all the hash map values, which will contain the lists of grouped anagrams.
+
+Video:
+https://www.youtube.com/watch?v=vzdNOK2oB2E&ab_channel=NeetCode
 """
+import unittest
 
 
 def groupAnagrams(words):
@@ -26,7 +47,18 @@ def groupAnagrams(words):
     return list(grouped_anagrams.values())
 
 
-if __name__ == "__main__":
-    test = ["yo", "act", "flop", "tac", "foo", "cat", "oy", "olfp"]
-    out = groupAnagrams(test)
-    print(f"The result is : {out}")
+class TestProgram(unittest.TestCase):
+    def test_1(self):
+        words = ["yo", "act", "flop", "tac", "foo", "cat", "oy", "olfp"]
+        expected = [["yo", "oy"], ["flop", "olfp"], ["act", "tac", "cat"], ["foo"]]
+        output = list(map(lambda x: sorted(x), groupAnagrams(words)))
+
+        self.compare(expected, output)
+
+    def compare(self, expected, output):
+        if len(expected) == 0:
+            self.assertEqual(output, expected)
+            return
+        self.assertEqual(len(expected), len(output))
+        for group in expected:
+            self.assertTrue(sorted(group) in output)

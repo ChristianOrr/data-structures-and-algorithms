@@ -12,11 +12,24 @@ contained in the array and should return its index if it is, otherwise -1.
 Solution 1
 Time Complexity: O(log(n)), space complexity: O(log(n))
 Strategy:
-Use variation of Binary Search (three pointer strategy).
+Recursion. Use variation of Binary Search (three pointer strategy).
+Base Case1: If left > right return -1.
+Base Case2: If middle == target return middle.
 Check whether the left or right side is sorted.
 Then check if the target is within the sorted side's interval.
 If it is, then explore the sorted side, otherwise explore the other side.
 Continue this method until the target is found or left index is greater than the right.
+
+Solution 2
+Time Complexity: O(log(n)), space complexity: O(1)
+Strategy:
+Iterative. Use variation of Binary Search (three pointer strategy).
+While left <= right search for a match.
+If middle == target return middle.
+Otherwise check whether the left or right side is sorted.
+Then check if the target is within the sorted side's interval.
+If it is, then explore the sorted side, otherwise explore the other side.
+If the while loop completes without finding a match return -1.
 
 Video:
 https://www.youtube.com/watch?v=U8XENwh8Oy8&ab_channel=NeetCode

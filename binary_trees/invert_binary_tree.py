@@ -32,6 +32,17 @@ Swap the left and right tree nodes,
 then call dfs on the left and right nodes to recursively swap the children nodes.
 No need to return anything as the tree was altered in-place.
 
+Solution 2
+Time Complexity: O(n), space complexity: O(n)
+Strategy:
+Iterative. Alter the tree in place.
+Create a queue and initialize it with the root node.
+Iterate over the queue's elements while it is not empty.
+Set the current node to the node at the front of the queue.
+Swap the current nodes left and right nodes,
+then add the left and right nodes to the back of the queue.
+No need to return anything as the tree was altered in-place.
+
 Video:
 https://www.youtube.com/watch?v=OnSn2XEQ4MY&ab_channel=NeetCode
 """
