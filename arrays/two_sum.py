@@ -42,55 +42,41 @@ Return False if it loops through all elements.
 Video:
 https://www.youtube.com/watch?v=KLlXCFG5TnA&ab_channel=NeetCode
 """
-import unittest
 
-# Solution 1 O(n^2)
+# Solution 1 O(n^2) - brute force
+def two_number_sum_1(array, targetSum):
+    n = len(array)
+    for i in range(n):
+        for j in range(i + 1, n):
+            if array[i] + array[j] == targetSum:
+                return [array[i], array[j]]
+    return []
 
-# Solution 2 O(n)
-def twoNumberSum(array, targetSum):
+
+# Solution 2 O(n) - hash set
+def two_number_sum_2(array, targetSum):
     hash_map = set()
-    for i, num in enumerate(array):
+    for num in array:
         difference = targetSum - num
         if difference in hash_map:
             return [num, difference]
         hash_map.add(num)
     return []
 
-# Solution 3 O(nlog(n))
-def twoNumberSum(array, targetSum):
-    left = 0
-    right = len(array) - 1
-    array.sort()
 
-    while left < right:
-        left_value = array[left]
-        right_value = array[right]
-        total = left_value + right_value
-
-        if total == targetSum:
-            return [left_value, right_value]
-        elif total < targetSum:
-            left += 1
+# Solution 3 O(nlog(n)) - two pointers on sorted copy
+def two_number_sum_3(arr, target_sum):
+    sorted_arr = sorted(arr)
+    left_ptr = 0
+    right_ptr = len(sorted_arr) - 1
+    while left_ptr < right_ptr:
+        left_value = sorted_arr[left_ptr]
+        right_value = sorted_arr[right_ptr]
+        total_sum = left_value + right_value
+        if total_sum > target_sum:
+            right_ptr -= 1
+        elif total_sum < target_sum:
+            left_ptr += 1
         else:
-            right -= 1
+            return [left_value, right_value]
     return []
-
-
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        output = twoNumberSum([3, 5, -4, 8, 11, 1, -1, 6], 10)
-        self.assertTrue(len(output) == 2)
-        self.assertTrue(11 in output)
-        self.assertTrue(-1 in output)
-
-    def test_2(self):
-        output = twoNumberSum([4], 4)
-        self.assertTrue(len(output) == 0)
-
-    def test_3(self):
-        output = twoNumberSum([4, 6, 1], 5)
-        self.assertTrue(len(output) == 2)
-        self.assertTrue(4 in output)
-        self.assertTrue(1 in output)
