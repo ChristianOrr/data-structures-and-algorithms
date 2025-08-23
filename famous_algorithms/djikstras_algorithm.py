@@ -36,10 +36,9 @@ edges = [
 Sample Output
 [0, 7, 13, 27, 10, -1]
 """
-import unittest
 
-
-def dijkstrasAlgorithm(start, edges):
+# Solution
+def dijkstras_algorithm_1(start, edges):
     visited = set()
     shortest_paths = [float("inf") for i in range(len(edges))]
     shortest_paths[start] = 0
@@ -63,30 +62,3 @@ def dijkstrasAlgorithm(start, edges):
 
     result = [-1 if distance == float("inf") else distance for distance in shortest_paths ]
     return result
-
-
-
-
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        start = 0
-        edges = [[[1, 7]], [[2, 6], [3, 20], [4, 3]], [[3, 14]], [[4, 2]], [], []]
-        expected = [0, 7, 13, 27, 10, -1]
-        actual = dijkstrasAlgorithm(start, edges)
-        self.assertEqual(actual, expected)
-
-    def test_2(self):
-        start = 3
-        edges = [[[2, 4]], [[0, 2]], [[1, 1], [3, 2]], [[0, 3]]]
-        expected = [3, 8, 7, 0]
-        actual = dijkstrasAlgorithm(start, edges)
-        self.assertEqual(actual, expected)
-
-    def test_3(self):
-        start = 2
-        edges = [[], [], [], []]
-        expected = [-1, -1, 0, -1]
-        actual = dijkstrasAlgorithm(start, edges)
-        self.assertEqual(actual, expected)

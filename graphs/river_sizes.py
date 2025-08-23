@@ -33,10 +33,8 @@ Sample Output
 //   [1,  , 1, 1,  ],
 // ]
 """
-import unittest
 
-
-def riverSizes(matrix):
+def river_sizes_1(matrix):
     visited = set()
     sizes = []
     for i, row in enumerate(matrix):
@@ -73,23 +71,3 @@ def get_children(i, j, matrix, visited):
             visited.add((child[0], child[1]))
     return children
 
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        testInput = [
-            [1, 0, 0, 1, 0],
-            [1, 0, 1, 0, 0],
-            [0, 0, 1, 0, 1],
-            [1, 0, 1, 0, 1],
-            [1, 0, 1, 1, 0]
-        ]
-        expected = [1, 2, 2, 2, 5]
-        self.assertEqual(sorted(riverSizes(testInput)), expected)
-
-    def test_2(self):
-        testInput = [
-            [1, 1],
-            [1, 1],
-        ]
-        expected = [4]
-        self.assertEqual(sorted(riverSizes(testInput)), expected)

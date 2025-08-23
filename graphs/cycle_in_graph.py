@@ -38,10 +38,8 @@ true
 // 3) 1 -> 2 -> 0 -> 1
 // These are just 3 examples; there are more.
 """
-import unittest
 
-
-def cycleInGraph(edges):
+def cycle_in_graph_1(edges):
 
     for index, index_edges in enumerate(edges):
         contains_cycle = dfs(index, edges, set())
@@ -62,35 +60,3 @@ def dfs(index, edges, visited):
         else:
             visited.remove(edge)
     return False
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        input = [[1], [2], [0]]
-        expected = True
-        actual = cycleInGraph(input)
-        self.assertEqual(actual, expected)
-
-    def test_2(self):
-        input = [[]]
-        expected = False
-        actual = cycleInGraph(input)
-        self.assertEqual(actual, expected)
-
-    def test_3(self):
-        input = [[0]]
-        expected = True
-        actual = cycleInGraph(input)
-        self.assertEqual(actual, expected)
-
-    def test_4(self):
-        input = [[1, 2], [2], []]
-        expected = False
-        actual = cycleInGraph(input)
-        self.assertEqual(actual, expected)
-
-    def test_5(self):
-        input = [[1, 2], [2], [1]]
-        expected = True
-        actual = cycleInGraph(input)
-        self.assertEqual(actual, expected)

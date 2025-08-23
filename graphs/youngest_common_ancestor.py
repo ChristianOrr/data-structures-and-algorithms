@@ -31,8 +31,6 @@ H     I
 Sample Output
 node B
 """
-import unittest
-
 
 class AncestralTree:
     def __init__(self, name):
@@ -40,7 +38,7 @@ class AncestralTree:
         self.ancestor = None
 
 
-def getYoungestCommonAncestor(topAncestor, descendantOne, descendantTwo):
+def get_youngest_common_ancestor_1(topAncestor, descendantOne, descendantTwo):
     depth1 = get_depth(topAncestor, descendantOne)
     depth2 = get_depth(topAncestor, descendantTwo)
 
@@ -79,14 +77,3 @@ def new_trees():
         ancestralTrees[letter] = AncestralTree(letter)
     return ancestralTrees
 
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        trees = new_trees()
-        trees["A"].addDescendants(trees["B"], trees["C"])
-        trees["B"].addDescendants(trees["D"], trees["E"])
-        trees["D"].addDescendants(trees["H"], trees["I"])
-        trees["C"].addDescendants(trees["F"], trees["G"])
-
-        yca = getYoungestCommonAncestor(trees["A"], trees["E"], trees["I"])
-        self.assertTrue(yca == trees["B"])

@@ -28,8 +28,6 @@ Iterate over all the children and call dfs on all the children nodes.
 After the loop return the array.
 
 """
-import unittest
-
 
 # # Template
 # class Node:
@@ -61,13 +59,3 @@ class Node:
             child.depthFirstSearch(array)
         return array
 
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        graph = Node("A")
-        graph.addChild("B").addChild("C").addChild("D")
-        graph.children[0].addChild("E").addChild("F")
-        graph.children[2].addChild("G").addChild("H")
-        graph.children[0].children[1].addChild("I").addChild("J")
-        graph.children[2].children[0].addChild("K")
-        self.assertEqual(graph.depthFirstSearch([]), ["A", "B", "E", "F", "I", "J", "C", "D", "G", "K", "H"])

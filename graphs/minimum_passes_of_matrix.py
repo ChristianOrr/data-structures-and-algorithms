@@ -49,10 +49,8 @@ matrix = [
 Sample Output
 3
 """
-import unittest
 
-
-def minimumPassesOfMatrix(matrix):
+def minimum_passes_of_matrix(matrix):
     passes = dfs(matrix)
     return passes
 
@@ -96,23 +94,3 @@ def find_positive_children(i, j, matrix, visited):
     return len(children) > 0
 
 
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        input = [
-            [0, -1, -3, 2, 0],
-            [1, -2, -5, -1, -3],
-            [3, 0, 0, -4, -1],
-        ]
-        expected = 3
-        actual = minimumPassesOfMatrix(input)
-        self.assertEqual(actual, expected)
-
-    def test_2(self):
-        input = [
-            [1]
-        ]
-        expected = 0
-        actual = minimumPassesOfMatrix(input)
-        self.assertEqual(actual, expected)

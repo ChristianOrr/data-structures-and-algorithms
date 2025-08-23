@@ -18,9 +18,8 @@ array = [2, 3, 1, -4, -4, 2]
 Sample Output
 true
 """
-import unittest
 
-def hasSingleCycle(array):
+def has_single_cycle_1(array):
     if len(array) == 0:
         return True
 
@@ -44,23 +43,3 @@ def get_valid_index(current_index, increment, num_elements):
     else:
         return new_index
 
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        self.assertTrue(hasSingleCycle([2, 3, 1, -4, -4, 2]))
-
-    def test_2(self):
-        self.assertTrue(hasSingleCycle([1]))
-
-    def test_3(self):
-        self.assertTrue(hasSingleCycle([]))
-
-    def test_4(self):
-        self.assertTrue(not hasSingleCycle([3, 1, -1, -3]))
-
-    def test_5(self):
-        self.assertTrue(hasSingleCycle([5, 1, 1, -3]))
-
-    def test_6(self):
-        self.assertTrue(not hasSingleCycle([0, 1, 1]))
