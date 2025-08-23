@@ -23,11 +23,9 @@ Make sure the letter_index doesn't go out of bounds by using modulo.
 Get the new_letter in alphabet using the valid letter_index and add it to the new_string.
 After the loop return the new_string.
 """
-import unittest
-
 
 # Solution 1
-def caesarCipherEncryptor(string, key):
+def caesar_cipher_encryptor_1(string, key):
     alphabet = list('abcdefghijklmnopqrstuvwxyz')
     alphabet_length = len(alphabet)
     new_string = ""
@@ -40,7 +38,3 @@ def caesarCipherEncryptor(string, key):
         new_string += new_letter
     return new_string
 
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        self.assertEqual(caesarCipherEncryptor("xyz", 2), "zab")

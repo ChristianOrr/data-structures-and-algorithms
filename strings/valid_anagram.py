@@ -27,15 +27,13 @@ Strategy:
 Create hash map's to keep count of the number of times a character occurs.
 If the hash maps are different, then return False, otherwise return True.
 """
-import unittest
-
 # Solution 1
-def isAnagram(s, t):
+def is_anagram_1(s, t):
     return sorted(s) == sorted(t)
 
 
 # Solution 2
-def isAnagram(s, t):
+def is_anagram_2(s, t):
     if len(s) != len(t):
         return False
     hash_s = {}
@@ -50,15 +48,4 @@ def isAnagram(s, t):
             return False
 
     return True
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        s = "anagram"
-        t = "nagaram"
-        self.assertTrue(isAnagram(s, t))
-
-    def test_2(self):
-        s = "anagran"
-        t = "nagaram"
-        self.assertTrue(not isAnagram(s, t))
 

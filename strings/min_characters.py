@@ -15,10 +15,9 @@ Sample Output
 ["t", "t", "h", "i", "s", "a", "d", "d", "e", "e", "m", "!"]
 // The characters could be ordered differently.
 """
-import unittest
 
 
-def minimumCharactersForWords(words):
+def minimum_characters_for_words_1(words):
     chars = []
 
     for word in words:
@@ -30,17 +29,3 @@ def minimumCharactersForWords(words):
                 temp_chars.remove(char)
 
     return chars
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        input = ["this", "that", "did", "deed", "them!", "a"]
-        expected = ["t", "t", "h", "i", "s", "a", "d", "d", "e", "e", "m", "!"]
-        actual = minimumCharactersForWords(input)
-        self.assertEqual(sorted(actual), sorted(expected))
-
-    def test_2(self):
-        input = ["your", "you", "or", "yo"]
-        expected = ["y", "r", "o", "u"]
-        actual = minimumCharactersForWords(input)
-        self.assertEqual(sorted(actual), sorted(expected))

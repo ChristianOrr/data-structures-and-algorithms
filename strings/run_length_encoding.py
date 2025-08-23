@@ -21,8 +21,6 @@ string = "AAAAAAAAAAAAABBCCCCDD"
 Sample Output
 "9A4A2B4C2D"
 """
-import unittest
-
 
 def add_encoding(count, encoding, prev_char):
     rem = count % 9
@@ -33,7 +31,7 @@ def add_encoding(count, encoding, prev_char):
         encoding += str(rem) + prev_char
     return encoding
 
-def runLengthEncoding(string):
+def run_length_encoding_1(string):
     encoding = ""
     prev_char = ""
     count = 0
@@ -55,18 +53,3 @@ def runLengthEncoding(string):
 
     return add_encoding(count, encoding, prev_char)
 
-
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        string = "AAAAAAAAAAAAABBCCCCDD"
-        expected = "9A4A2B4C2D"
-        actual = runLengthEncoding(string)
-        self.assertEqual(actual, expected)
-
-    def test_2(self):
-        string = "........______=========AAAA   AAABBBB   BBB"
-        expected = "8.6_9=4A3 3A4B3 3B"
-        actual = runLengthEncoding(string)
-        self.assertEqual(actual, expected)

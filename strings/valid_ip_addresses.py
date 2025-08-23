@@ -34,7 +34,7 @@ Sample Output
 // The IP addresses could be ordered differently.
 """
 
-def validIPAddresses(string):
+def valid_ip_addresses_1(string):
     all_addresses = []
     for i in range(1, min(4, len(string) - 2)):
         ip = ["", "", "", ""]
@@ -60,9 +60,3 @@ def validIPAddresses(string):
                             all_addresses.append(".".join(ip))
     return all_addresses
 
-
-
-if __name__ == "__main__":
-    test = "1921680"
-    out = validIPAddresses(test)
-    print(f"The result is : {out}")

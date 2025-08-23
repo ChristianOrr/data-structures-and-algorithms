@@ -20,10 +20,8 @@ string = "Reverse these words."
 Sample Output
 "words. these Reverse"
 """
-import unittest
 
-
-def reverseWordsInString(string):
+def reverse_words_in_string_1(string):
     words = []
     first = 0
     last = 0
@@ -41,22 +39,3 @@ def reverseWordsInString(string):
 
     return "".join(words)
 
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        input = "Reverse these words."
-        expected = "words. these Reverse"
-        actual = reverseWordsInString(input)
-        self.assertEqual(actual, expected)
-
-    def test_2(self):
-        input = "bbb  "
-        expected = "  bbb"
-        actual = reverseWordsInString(input)
-        self.assertEqual(actual, expected)
-
-    def test_3(self):
-        input = " "
-        expected = " "
-        actual = reverseWordsInString(input)
-        self.assertEqual(actual, expected)

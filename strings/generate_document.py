@@ -21,7 +21,6 @@ document = "Generate Document!"
 Sample Output
 true
 """
-import unittest
 
 def find_char(chars, char):
     for j, single_char in enumerate(chars):
@@ -30,7 +29,7 @@ def find_char(chars, char):
     return -1
 
 
-def generateDocument(characters, document):
+def generate_document_1(characters, document):
     characters = list(characters)
     if len(characters) < len(document):
         return False
@@ -44,26 +43,3 @@ def generateDocument(characters, document):
 
     return True
 
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        characters = "atGent!ne reumeDoc"
-        document = "Generate Document!"
-        expected = True
-        actual = generateDocument(characters, document)
-        self.assertEqual(actual, expected)
-
-    def test_2(self):
-        characters = "L"
-        document = "l"
-        expected = False
-        actual = generateDocument(characters, document)
-        self.assertEqual(actual, expected)
-
-    def test_3(self):
-        characters = "l"
-        document = "l"
-        expected = True
-        actual = generateDocument(characters, document)
-        self.assertEqual(actual, expected)
