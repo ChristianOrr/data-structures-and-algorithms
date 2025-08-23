@@ -35,9 +35,6 @@ add the current value to the running sum, then append the sum to the output arra
 Pass through the output array and running sum to the left and right nodes if they are not None.
 Return the output array at the end.
 """
-import unittest
-
-
 class BinaryTree:
     def __init__(self, value):
         self.value = value
@@ -45,7 +42,7 @@ class BinaryTree:
         self.right = None
 
 
-def branchSums(root):
+def branch_sums_solution_1(root):
     output = []
     dfs(root, 0, output)
     return output
@@ -79,9 +76,3 @@ class BinaryTree(BinaryTree):
             queue.append(current.right)
         self.insert(values, i + 1)
         return self
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        tree = BinaryTree(1).insert([2, 3, 4, 5, 6, 7, 8, 9, 10])
-        self.assertEqual(branchSums(tree), [15, 16, 18, 10, 11])

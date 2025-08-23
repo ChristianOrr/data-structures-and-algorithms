@@ -21,8 +21,6 @@ tree = 1
 Sample Output
 true
 """
-import unittest
-
 class BinaryTree:
     def __init__(self, value, left=None, right=None):
         self.value = value
@@ -30,7 +28,7 @@ class BinaryTree:
         self.right = right
 
 
-def heightBalancedBinaryTree(tree):
+def height_balanced_binary_tree_solution_1(tree):
     if tree is None:
         return True
 
@@ -57,17 +55,3 @@ def backtrack(node,  height=0):
     else:
         return max(left_height, right_height)
 
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        root = BinaryTree(1)
-        root.left = BinaryTree(2)
-        root.right = BinaryTree(3)
-        root.left.left = BinaryTree(4)
-        root.left.right = BinaryTree(5)
-        root.right.right = BinaryTree(6)
-        root.left.right.left = BinaryTree(7)
-        root.left.right.right = BinaryTree(8)
-        expected = True
-        actual = heightBalancedBinaryTree(root)
-        self.assertEqual(actual, expected)

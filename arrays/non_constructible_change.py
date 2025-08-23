@@ -9,10 +9,8 @@ The given coins can have any positive integer value and aren't necessarily uniqu
 For example, if you're given coins = [1, 2, 5], the minimum amount of change that you can't create is 4.
 If you're given no coins, the minimum amount of change that you can't create is 1.
 """
-import unittest
-
-
-def nonConstructibleChange(coins):
+# Solution
+def non_constructible_change_solution_1(coins):
     coins.sort()
     change = 0
     for coin in coins:
@@ -20,26 +18,6 @@ def nonConstructibleChange(coins):
             return change + 1
         change += coin
     return change + 1
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        input = [5, 7, 1, 1, 2, 3, 22]
-        expected = 20
-        actual = nonConstructibleChange(input)
-        self.assertEqual(actual, expected)
-
-    def test_2(self):
-        input = []
-        expected = 1
-        actual = nonConstructibleChange(input)
-        self.assertEqual(actual, expected)
-
-    def test_3(self):
-        input = [1, 1]
-        expected = 3
-        actual = nonConstructibleChange(input)
-        self.assertEqual(actual, expected)
 
 
 

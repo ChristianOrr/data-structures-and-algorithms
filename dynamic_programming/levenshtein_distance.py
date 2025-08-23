@@ -13,10 +13,7 @@ str2 = "yabd"
 Sample Output
 2 // insert "y"; substitute "c" for "d"
 """
-import unittest
-
-
-def levenshteinDistance(str1, str2):
+def levenshtein_distance_1(str1, str2):
     min_edits = []
     for i in range(len(str1) + 1):
         row = []
@@ -39,12 +36,3 @@ def levenshteinDistance(str1, str2):
                 min_edits[i][j] = min_prev + 1
 
     return min_edits[-1][-1]
-
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        self.assertEqual(levenshteinDistance("abc", "yabd"), 2)
-
-    def test_2(self):
-        self.assertEqual(levenshteinDistance("biting", "mitten"), 4)

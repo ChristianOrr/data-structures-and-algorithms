@@ -36,10 +36,8 @@ Add the current depth to the depth sum, then increment the current depth by 1.
 Call dfs on the left and right nodes.
 Return the depth sum at the end.
 """
-import unittest
-
 # Solution 1
-def nodeDepths(root):
+def node_depths_solution_1(root):
     return dfs(root, 0, 0)
 
 
@@ -62,18 +60,3 @@ class BinaryTree:
         self.value = value
         self.left = None
         self.right = None
-        
-        
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        root = BinaryTree(1)
-        root.left = BinaryTree(2)
-        root.left.left = BinaryTree(4)
-        root.left.left.left = BinaryTree(8)
-        root.left.left.right = BinaryTree(9)
-        root.left.right = BinaryTree(5)
-        root.right = BinaryTree(3)
-        root.right.left = BinaryTree(6)
-        root.right.right = BinaryTree(7)
-        actual = nodeDepths(root)
-        self.assertEqual(actual, 16)

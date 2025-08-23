@@ -31,10 +31,8 @@ When a match is found increase sequence counter,
 increase counter for array at end of loop.
 After loop is complete return True if counter == len(sequence), False otherwise.
 """
-import unittest
-
-# Solution 2
-def isValidSubsequence(array, sequence):
+# Solution 1
+def validate_subsequence_solution_1(array, sequence):
     array_index = 0
     seq_index = 0
 
@@ -43,20 +41,4 @@ def isValidSubsequence(array, sequence):
             seq_index += 1
         array_index += 1
     return seq_index == len(sequence)
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        array = [5, 1, 22, 25, 6, -1, 8, 10]
-        sequence = [1, 6, -1, 10]
-        self.assertTrue(isValidSubsequence(array, sequence))
-
-    def test_2(self):
-        array = [5]
-        sequence = [5]
-        self.assertTrue(isValidSubsequence(array, sequence))
-
-    def test_3(self):
-        array = [5]
-        sequence = [4]
-        self.assertTrue(not isValidSubsequence(array, sequence))
+# Tests moved to tests/arrays/test_validate_subsequence.py

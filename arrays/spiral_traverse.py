@@ -17,11 +17,9 @@ array = [
 Sample Output
 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
 """
-import unittest
 
-
-
-def spiralTraverse(array):
+# Solution
+def spiral_traverse_solution_1(array):
     visited = [(0, 0)]
     direction = "right"
     i = 0
@@ -57,10 +55,3 @@ def spiralTraverse(array):
             visited.append((i, j))
 
     return [array[i][j] for i, j in visited]
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        matrix = [[1, 2, 3, 4], [12, 13, 14, 5], [11, 16, 15, 6], [10, 9, 8, 7]]
-        expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-        self.assertEqual(spiralTraverse(matrix), expected)

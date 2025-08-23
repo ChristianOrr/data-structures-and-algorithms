@@ -36,9 +36,6 @@ nodeThree = 3 // The actual node with value 3.
 Sample Output
 true // nodeOne is an ancestor of nodeTwo, and nodeThree is a descendant of nodeTwo.
 """
-import unittest
-
-
 class BST:
     def __init__(self, value, left=None, right=None):
         self.value = value
@@ -46,7 +43,7 @@ class BST:
         self.right = right
 
 
-def validateThreeNodes(nodeOne, nodeTwo, nodeThree):
+def validate_three_nodes(nodeOne, nodeTwo, nodeThree):
     found1 = find_node(nodeTwo, nodeOne)
     found3 = find_node(nodeTwo, nodeThree)
 
@@ -78,22 +75,3 @@ def find_node(descendant, parent):
 
     return False
 
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        root = BST(5)
-        root.left = BST(2)
-        root.right = BST(7)
-        root.left.left = BST(1)
-        root.left.right = BST(4)
-        root.right.left = BST(6)
-        root.right.right = BST(8)
-        root.left.left.left = BST(0)
-        root.left.right.left = BST(3)
-
-        nodeOne = root
-        nodeTwo = root.left
-        nodeThree = root.left.right.left
-        expected = True
-        actual = validateThreeNodes(nodeOne, nodeTwo, nodeThree)
-        self.assertEqual(actual, expected)

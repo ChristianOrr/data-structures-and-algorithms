@@ -34,34 +34,34 @@ class BST:
         self.left = None
         self.right = None
 
-def inOrderTraverse(tree, array):
+def in_order_traverse_solution_1(tree, array):
     if tree is None:
         return array
 
-    array = inOrderTraverse(tree.left, array)
+    array = in_order_traverse_solution_1(tree.left, array)
     array.append(tree.value)
-    array = inOrderTraverse(tree.right, array)
+    array = in_order_traverse_solution_1(tree.right, array)
 
     return array
 
 
-def preOrderTraverse(tree, array):
+def pre_order_traverse_solution_1(tree, array):
     if tree is None:
         return array
 
     array.append(tree.value)
-    array = preOrderTraverse(tree.left, array)
-    array = preOrderTraverse(tree.right, array)
+    array = pre_order_traverse_solution_1(tree.left, array)
+    array = pre_order_traverse_solution_1(tree.right, array)
 
     return array
 
 
-def postOrderTraverse(tree, array):
+def post_order_traverse_solution_1(tree, array):
     if tree is None:
         return array
 
-    array = postOrderTraverse(tree.left, array)
-    array = postOrderTraverse(tree.right, array)
+    array = post_order_traverse_solution_1(tree.left, array)
+    array = post_order_traverse_solution_1(tree.right, array)
     array.append(tree.value)
 
     return array
@@ -69,20 +69,4 @@ def postOrderTraverse(tree, array):
 
 
 
-class TestProgram(unittest.TestCase):
-    def test_case_1(self):
-        root = BST(10)
-        root.left = BST(5)
-        root.left.left = BST(2)
-        root.left.left.left = BST(1)
-        root.left.right = BST(5)
-        root.right = BST(15)
-        root.right.right = BST(22)
-
-        inOrder = [1, 2, 5, 5, 10, 15, 22]
-        preOrder = [10, 5, 2, 1, 5, 15, 22]
-        postOrder = [1, 2, 5, 5, 22, 15, 10]
-
-        self.assertEqual(inOrderTraverse(root, []), inOrder)
-        self.assertEqual(preOrderTraverse(root, []), preOrder)
-        self.assertEqual(postOrderTraverse(root, []), postOrder)
+# Tests moved to tests/binary_search_trees/test_traversal.py

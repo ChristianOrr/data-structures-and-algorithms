@@ -44,8 +44,6 @@ remove(10):   12
 
 contains(15): true
 """
-import unittest
-
 
 class BST:
     def __init__(self, value):
@@ -110,57 +108,4 @@ class BST:
             return current_node.value
         return self.find_replacement(current_node.left)
 
-
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        root = BST(10)
-        root.left = BST(5)
-        root.left.left = BST(2)
-        root.left.left.left = BST(1)
-        root.left.right = BST(5)
-        root.right = BST(15)
-        root.right.left = BST(13)
-        root.right.left.right = BST(14)
-        root.right.right = BST(22)
-
-        root.insert(12)
-        self.assertTrue(root.right.left.left.value == 12)
-
-        root.remove(10)
-        self.assertTrue(not root.contains(10))
-        self.assertTrue(root.value == 12)
-        self.assertTrue(not root.right.left.left == 12)
-
-        self.assertTrue(root.contains(15))
-
-    def test_2(self):
-        root = BST(10)
-
-        root.insert(5)
-        self.assertTrue(root.left.value == 5)
-        root.insert(15)
-        self.assertTrue(root.right.value == 15)
-
-        root.remove(10)
-        self.assertTrue(not root.contains(10))
-        self.assertTrue(root.right is None)
-        self.assertTrue(root.value == 15)
-        root.remove(5)
-        self.assertTrue(not root.contains(5))
-
-    def test_3(self):
-        root = BST(1)
-
-        root.insert(2)
-        self.assertTrue(root.right.value == 2)
-        root.insert(3)
-        self.assertTrue(root.right.right.value == 3)
-        root.insert(4)
-        self.assertTrue(root.right.right.right.value == 4)
-
-        root.remove(1)
-        self.assertTrue(not root.contains(1))
-        self.assertTrue(root.value == 2)
 

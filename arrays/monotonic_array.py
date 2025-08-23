@@ -11,10 +11,8 @@ Similarly, non-decreasing elements aren't necessarily exclusively increasing; th
 
 Note that empty arrays and arrays of one element are monotonic.
 """
-import unittest
-
-
-def isMonotonic(array):
+# Solution
+def monotonic_array_solution_1(array):
     decreasing = None
     for i in range(1, len(array)):
         change = array[i] - array[i - 1]
@@ -35,34 +33,3 @@ def isMonotonic(array):
                     continue
     return True
 
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        array = [-1, -5, -10, -1100, -1100, -1101, -1102, -9001]
-        expected = True
-        actual = isMonotonic(array)
-        self.assertEqual(actual, expected)
-
-    def test_2(self):
-        array = [2, 2, 2, 1, 4, 5]
-        expected = False
-        actual = isMonotonic(array)
-        self.assertEqual(actual, expected)
-
-    def test_3(self):
-        array = [1, 2]
-        expected = True
-        actual = isMonotonic(array)
-        self.assertEqual(actual, expected)
-
-    def test_4(self):
-        array = []
-        expected = True
-        actual = isMonotonic(array)
-        self.assertEqual(actual, expected)
-
-    def test_5(self):
-        array = [7]
-        expected = True
-        actual = isMonotonic(array)
-        self.assertEqual(actual, expected)

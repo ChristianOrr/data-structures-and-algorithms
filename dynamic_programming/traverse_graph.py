@@ -24,10 +24,7 @@ height = 3
 Sample Output
 10
 """
-import unittest
-
-
-def numberOfWaysToTraverseGraph(width, height):
+def number_of_ways_to_traverse_graph_1(width, height):
     ways = []
 
     for r in range(height):
@@ -46,27 +43,3 @@ def numberOfWaysToTraverseGraph(width, height):
         ways.append(row)
 
     return ways[-1][-1]
-
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        width = 4
-        height = 3
-        expected = 10
-        actual = numberOfWaysToTraverseGraph(width, height)
-        self.assertEqual(actual, expected)\
-
-    def test_2(self):
-        width = 8
-        height = 5
-        expected = 330
-        actual = numberOfWaysToTraverseGraph(width, height)
-        self.assertEqual(actual, expected)
-
-    def test_3(self):
-        width = 3
-        height = 2
-        expected = 3
-        actual = numberOfWaysToTraverseGraph(width, height)
-        self.assertEqual(actual, expected)

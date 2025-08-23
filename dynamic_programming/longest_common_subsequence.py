@@ -17,10 +17,8 @@ str2 = "XKYKZPW"
 Sample Output
 ["X", "Y", "Z", "W"]
 """
-import unittest
-
-
-def longestCommonSubsequence(str1, str2):
+# Solution 
+def longest_common_subsequence_1(str1, str2):
 
     longest_substrings = []
 
@@ -44,22 +42,3 @@ def longestCommonSubsequence(str1, str2):
         longest_substrings.append(row)
     return list(longest_substrings[-1][-1])
 
-
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        output = longestCommonSubsequence("ZXVVYZW", "XKYKZPW")
-        self.assertEqual(output, ["X", "Y", "Z", "W"])
-
-    def test_2(self):
-        output = longestCommonSubsequence("ABCDEFGHIJKLMNOPQRSTUVWXYZ", "CCCDDEGDHAGKGLWAJWKJAWGKGWJAKLGGWAFWLFFWAGJWKAG")
-        self.assertEqual(output, ["C", "D", "E", "G", "H", "J", "K", "L", "W"])
-
-    def test_3(self):
-        output = longestCommonSubsequence("", "")
-        self.assertEqual(output, [])
-
-    def test_4(self):
-        output = longestCommonSubsequence("", "DJHIO")
-        self.assertEqual(output, [])

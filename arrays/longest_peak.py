@@ -16,10 +16,8 @@ array = [1, 2, 3, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3]
 Sample Output
 6 // 0, 10, 6, 5, -1, -3
 """
-import unittest
-
-
-def longestPeak(array):
+# Solution 1
+def longest_peak_solution_1(array):
     longest = 0
     i = 1
 
@@ -40,31 +38,3 @@ def longestPeak(array):
                 longest = current
         i = right
     return longest
-
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        array = [1, 2, 3, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3]
-        expected = 6
-        self.assertEqual(longestPeak(array), expected)
-
-    def test_2(self):
-        array = [5, 4, 3, 2, 1, 2, 1]
-        expected = 3
-        self.assertEqual(longestPeak(array), expected)
-
-    def test_3(self):
-        array = [1, 2, 3, 3, 2, 1]
-        expected = 0
-        self.assertEqual(longestPeak(array), expected)
-
-    def test_4(self):
-        array = [1, 2, 3, 2, 1, 1]
-        expected = 5
-        self.assertEqual(longestPeak(array), expected)
-
-    def test_5(self):
-        array = [1, 1, 1, 2, 3, 10, 12, -3, -3, 2, 3, 45, 800, 99, 98, 0, -1, -1, 2, 3, 4, 5, 0, -1, -1]
-        expected = 9
-        self.assertEqual(longestPeak(array), expected)

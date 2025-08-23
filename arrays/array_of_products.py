@@ -17,23 +17,22 @@ Sample Output
 // 10 is equal to 5 x 1 x 2
 // 20 is equal to 5 x 1 x 4
 """
-import unittest
 
-# # Solution 1 O(n^2)
-# def arrayOfProducts(array):
-#     output = []
-#     for i in range(len(array)):
-#         prod = 1
-#         for j in range(len(array)):
-#             if i != j:
-#                 prod *= array[j]
-#
-#         output.append(prod)
-#
-#     return output
+# Solution 1 O(n^2)
+def array_of_products_solution_1(array):
+    output = []
+    for i in range(len(array)):
+        prod = 1
+        for j in range(len(array)):
+            if i != j:
+                prod *= array[j]
+
+        output.append(prod)
+
+    return output
 
 # Solution 2 O(n)
-def arrayOfProducts(array):
+def array_of_products_solution_2(array):
 
     prods = [1 for i in range(len(array))]
     right_prods = prods.copy()
@@ -52,12 +51,3 @@ def arrayOfProducts(array):
         prods[i] = left_prods[i] * right_prods[i]
 
     return prods
-
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        array = [5, 1, 4, 2]
-        expected = [8, 40, 10, 20]
-        actual = arrayOfProducts(array)
-        self.assertEqual(actual, expected)

@@ -40,10 +40,7 @@ Sample Output
  /           \
 1            14
 """
-import unittest
-
-
-def minHeightBst(array):
+def min_height_bst(array):
     middle_index = get_middle(array)
     node = BST(array[middle_index])
 
@@ -51,12 +48,12 @@ def minHeightBst(array):
         node.left = None
     else:
         left_array = array[0:middle_index]
-        node.left = minHeightBst(left_array)
+        node.left = min_height_bst(left_array)
     if middle_index == len(array) - 1:
         node.right = None
     else:
         right_array = array[middle_index + 1:]
-        node.right = minHeightBst(right_array)
+        node.right = min_height_bst(right_array)
 
     return node
 
@@ -88,44 +85,31 @@ class BST:
                 self.right.insert(value)
 
 
-def inOrderTraverse(tree, array):
+def in_order_traverse(tree, array):
     if tree is not None:
-        inOrderTraverse(tree.left, array)
+        in_order_traverse(tree.left, array)
         array.append(tree.value)
-        inOrderTraverse(tree.right, array)
+        in_order_traverse(tree.right, array)
     return array
 
 
-def validateBst(tree):
-    return validateBstHelper(tree, float("-inf"), float("inf"))
+def validate_bst(tree):
+    return validate_bst_helper(tree, float("-inf"), float("inf"))
 
 
-def validateBstHelper(tree, minValue, maxValue):
+def validate_bst_helper(tree, minValue, maxValue):
     if tree is None:
         return True
     if tree.value < minValue or tree.value >= maxValue:
         return False
-    leftIsValid = validateBstHelper(tree.left, minValue, tree.value)
-    return leftIsValid and validateBstHelper(tree.right, tree.value, maxValue)
+    leftIsValid = validate_bst_helper(tree.left, minValue, tree.value)
+    return leftIsValid and validate_bst_helper(tree.right, tree.value, maxValue)
 
 
-def getTreeHeight(tree, height=0):
+def get_tree_height(tree, height=0):
     if tree is None:
         return height
-    leftTreeHeight = getTreeHeight(tree.left, height + 1)
-    rightTreeHeight = getTreeHeight(tree.right, height + 1)
+    leftTreeHeight = get_tree_height(tree.left, height + 1)
+    rightTreeHeight = get_tree_height(tree.right, height + 1)
     return max(leftTreeHeight, rightTreeHeight)
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        array = [1, 2, 5, 7, 10, 13, 14, 15, 22]
-        tree = minHeightBst(array)
-
-        self.assertTrue(validateBst(tree))
-        self.assertEqual(getTreeHeight(tree), 4)
-
-        inOrder = inOrderTraverse(tree, [])
-
-        self.assertEqual(inOrder, [1, 2, 5, 7, 10, 13, 14, 15, 22])
 

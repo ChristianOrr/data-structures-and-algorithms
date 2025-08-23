@@ -26,18 +26,16 @@ true // both arrays represent the BST below
  /       /     /
 2       11    81
 """
-import unittest
-
-
-def sameBsts(arrayOne, arrayTwo):
-    if len(arrayOne) == 0 and len(arrayTwo) == 0:
+# Solution
+def same_bsts(array_one, array_two):
+    if len(array_one) == 0 and len(array_two) == 0:
         return True
-    elif arrayOne[0] != arrayTwo[0] or sorted(arrayOne) != sorted(arrayTwo):
+    elif array_one[0] != array_two[0] or sorted(array_one) != sorted(array_two):
         return False
-    head = arrayOne[0]
+    head = array_one[0]
     left1 = []
     right1 = []
-    for value in arrayOne[1:]:
+    for value in array_one[1:]:
         if value < head:
             left1.append(value)
         else:
@@ -45,23 +43,15 @@ def sameBsts(arrayOne, arrayTwo):
 
     left2 = []
     right2 = []
-    for value2 in arrayTwo[1:]:
+    for value2 in array_two[1:]:
         if value2 < head:
             left2.append(value2)
         else:
             right2.append(value2)
 
-    same_left = sameBsts(left1, left2)
-    same_right = sameBsts(right1, right2)
+    same_left = same_bsts(left1, left2)
+    same_right = same_bsts(right1, right2)
 
     return same_left and same_right
 
 
-
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        arrayOne = [10, 15, 8, 12, 94, 81, 5, 2, 11]
-        arrayTwo = [10, 8, 5, 15, 2, 12, 11, 94, 81]
-        self.assertEqual(sameBsts(arrayOne, arrayTwo), True)

@@ -46,10 +46,7 @@ No need to return anything as the tree was altered in-place.
 Video:
 https://www.youtube.com/watch?v=OnSn2XEQ4MY&ab_channel=NeetCode
 """
-import unittest
-
-
-def invertBinaryTree(tree):
+def invert_binary_tree_solution_1(tree):
     swap_nodes(tree)
     return tree
 
@@ -91,7 +88,7 @@ class BinaryTree:
         self.insert(values, i + 1)
         return self
 
-    def invertedInsert(self, values, i=0):
+    def inverted_insert(self, values, i=0):
         if i >= len(values):
             return
         queue = [self]
@@ -105,13 +102,5 @@ class BinaryTree:
                 current.left = BinaryTree(values[i])
                 break
             queue.append(current.left)
-        self.invertedInsert(values, i + 1)
+        self.inverted_insert(values, i + 1)
         return self
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        tree = BinaryTree(1).insert([2, 3, 4, 5, 6, 7, 8, 9])
-        invertedTree = BinaryTree(1).invertedInsert([2, 3, 4, 5, 6, 7, 8, 9])
-        invertBinaryTree(tree)
-        self.assertTrue(tree.__eq__(invertedTree))

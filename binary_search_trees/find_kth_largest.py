@@ -28,10 +28,7 @@ k = 3
 Sample Output
 17
 """
-import unittest
-
-
-def findKthLargestValueInBst(tree, k):
+def find_kth_largest_value_in_bst_solution_1(tree, k):
     sorted_values = in_order_traverse(tree, [])
     sorted_values.reverse()
     kth_largest = sorted_values[k - 1]
@@ -55,29 +52,4 @@ class BST:
         self.value = value
         self.left = left
         self.right = right
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        root = BST(15)
-        root.left = BST(5)
-        root.left.left = BST(2)
-        root.left.left.left = BST(1)
-        root.left.left.right = BST(3)
-        root.left.right = BST(5)
-        root.right = BST(20)
-        root.right.left = BST(17)
-        root.right.right = BST(22)
-        k = 3
-        expected = 17
-        actual = findKthLargestValueInBst(root, k)
-        self.assertEqual(actual, expected)
-
-    def test_2(self):
-        root = BST(18)
-
-        k = 1
-        expected = 18
-        actual = findKthLargestValueInBst(root, k)
-        self.assertEqual(actual, expected)
 

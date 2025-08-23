@@ -18,10 +18,7 @@ array = [10, 70, 20, 30, 50, 11, 30]
 Sample Output
 [110, [10, 20, 30, 50]] // The subsequence [10, 20, 30, 50] is strictly increasing and yields the greatest sum: 110.
 """
-import unittest
-
-
-def maxSumIncreasingSubsequence(array):
+def max_sum_increasing_subsequence_1(array):
     sums = [array[0]]
     prev_indexes = [None for i in range(len(array))]
 
@@ -42,18 +39,4 @@ def maxSumIncreasingSubsequence(array):
         new_index = prev_indexes[new_index]
 
     return [max_value, sub_sequence]
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        self.assertEqual(maxSumIncreasingSubsequence([10, 70, 20, 30, 50, 11, 30]), [110, [10, 20, 30, 50]])
-
-    def test_2(self):
-        self.assertEqual(maxSumIncreasingSubsequence([5, 4, 3, 2, 1]), [5, [5]])
-
-    def test_3(self):
-        self.assertEqual(maxSumIncreasingSubsequence(
-            [10, 15, 4, 5, 11, 14, 31, 25, 31, 23, 25, 31, 50]),
-            [164, [10, 11, 14, 23, 25, 31, 50]]
-            )
 

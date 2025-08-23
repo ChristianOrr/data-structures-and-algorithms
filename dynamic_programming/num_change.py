@@ -14,10 +14,8 @@ denoms = [1, 5]
 Sample Output
 2 // 1x1 + 1x5 and 6x1
 """
-import unittest
 
-
-def numberOfWaysToMakeChange(n, denoms):
+def number_of_ways_to_make_change_1(n, denoms):
     ways = [0 for i in range(n + 1)]
     ways[0] = 1
 
@@ -27,13 +25,3 @@ def numberOfWaysToMakeChange(n, denoms):
                 ways[i] += ways[i - denom]
 
     return ways[-1]
-
-
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        self.assertEqual(numberOfWaysToMakeChange(6, [1, 5]), 2)
-
-    def test_2(self):
-        self.assertEqual(numberOfWaysToMakeChange(10, [1, 5, 10, 25]), 4)

@@ -24,10 +24,8 @@ then add its square to the output array, starting from the back.
 Return the output array after the loop.
 
 """
-import unittest
-
-
-def sortedSquaredArray(array):
+# Solution 
+def sorted_squared_array_solution_1(array):
 
     output = [0 for _ in range(len(array))]
     left = 0
@@ -43,13 +41,3 @@ def sortedSquaredArray(array):
             right -= 1
 
     return output
-
-
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        input = [-3, 1, 2, 3, 5]
-        expected = [1, 4, 9, 9, 25]
-        actual = sortedSquaredArray(input)
-        self.assertEqual(actual, expected)

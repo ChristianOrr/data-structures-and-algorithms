@@ -17,10 +17,8 @@ Sample Output
 // There are 4 integers smaller than 11 to the right of it.
 // Etc..
 """
-import unittest
-
 # Solution 1. Double for loop, O(n^2)
-def rightSmallerThan(array):
+def right_smaller_than_1(array):
     if len(array) == 0:
         return []
     array.append(max(array) + 1)
@@ -35,20 +33,7 @@ def rightSmallerThan(array):
         smaller_than_array.append(num_smaller)
     return smaller_than_array
 
-# Solution 2
-def rightSmallerThan(array):
+
+# Solution 2 (placeholder)
+def right_smaller_than_2(array):
     pass
-
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        array = [8, 5, 11, -1, 3, 4, 2]
-        expected = [5, 4, 4, 0, 1, 1, 0]
-        actual = rightSmallerThan(array)
-        self.assertEqual(expected, actual)
-    def test_2(self):
-        array = []
-        expected = []
-        actual = []
-        self.assertEqual(expected, actual)

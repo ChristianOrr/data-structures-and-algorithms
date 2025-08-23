@@ -16,10 +16,7 @@ denoms = [1, 5, 10]
 Sample Output
 3 // 2x1 + 1x5
 """
-import unittest
-
-
-def minNumberOfCoinsForChange(n, denoms):
+def min_number_of_coins_for_change_1(n, denoms):
     min_coins = [float("inf") for i in range(n + 1)]
     min_coins[0] = 0
 
@@ -31,13 +28,3 @@ def minNumberOfCoinsForChange(n, denoms):
                 min_coins[amount] = min_required
 
     return min_coins[-1] if min_coins[-1] != float("inf") else -1
-
-
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        self.assertEqual(minNumberOfCoinsForChange(7, [1, 5, 10]), 3)
-
-    def test_2(self):
-        self.assertEqual(minNumberOfCoinsForChange(7, [2, 4]), -1)

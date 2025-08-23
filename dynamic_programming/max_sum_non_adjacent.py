@@ -11,10 +11,7 @@ array = [75, 105, 120, 75, 90, 135]
 Sample Output
 330 // 75 + 120 + 135
 """
-import unittest
-
-
-def maxSubsetSumNoAdjacent(array):
+def max_subset_sum_no_adjacent_1(array):
     if len(array) == 0:
         return 0
 
@@ -30,10 +27,3 @@ def maxSubsetSumNoAdjacent(array):
 
     return max_values[-1]
 
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        self.assertEqual(maxSubsetSumNoAdjacent([75, 105, 120, 75, 90, 135]), 330)
-
-    def test_2(self):
-        self.assertEqual(maxSubsetSumNoAdjacent([]), 0)

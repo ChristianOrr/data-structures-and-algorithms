@@ -45,15 +45,14 @@ Return True if left and right are True, otherwise return False.
 Video:
 https://www.youtube.com/watch?v=vRbbcKXCxOw&ab_channel=NeetCode
 """
-import unittest
-
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
 
-def isSameTree(p, q):
+
+def is_same_tree_solution_1(p, q):
     return dfs(p, q)
 
 def dfs(p, q):
@@ -69,28 +68,3 @@ def dfs(p, q):
         return is_left_same and is_right_same
 
 
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        root = TreeNode(1)
-        root.left = TreeNode(2)
-        root.right = TreeNode(3)
-        self.assertTrue(isSameTree(root, root))
-
-    def test_2(self):
-        p = TreeNode(1)
-        p.left = TreeNode(2)
-        q = TreeNode(1)
-        q.right = TreeNode(2)
-
-        self.assertTrue(not isSameTree(p, q))
-
-    def test_3(self):
-        p = TreeNode(1)
-        p.left = TreeNode(2)
-        p.right = TreeNode(3)
-        q = TreeNode(1)
-        q.left = TreeNode(3)
-        q.right = TreeNode(2)
-
-        self.assertTrue(not isSameTree(p, q))

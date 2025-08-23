@@ -38,18 +38,16 @@ Return the max depth at the end.
 Video:
 https://www.youtube.com/watch?v=hTM3phVI6YQ&lc=UgxUajmaDDsmZ5Tp0U54AaABAg&ab_channel=NeetCode
 """
-import unittest
-
-
-def maxDepth(root, depth=0, max_depth=0):
+# Solution
+def max_depth_solution_1(root, depth=0, max_depth=0):
     if root is None:
         return max_depth
 
     depth += 1
     max_depth = max(depth, max_depth)
 
-    max_depth = maxDepth(root.left, depth, max_depth)
-    max_depth = maxDepth(root.right, depth, max_depth)
+    max_depth = max_depth_solution_1(root.left, depth, max_depth)
+    max_depth = max_depth_solution_1(root.right, depth, max_depth)
 
     return max_depth
 
@@ -62,12 +60,3 @@ class BinaryTree:
         self.right = None
 
 
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        root = BinaryTree(3)
-        root.left = BinaryTree(9)
-        root.right = BinaryTree(20)
-        root.right.left = BinaryTree(15)
-        root.right.right = BinaryTree(7)
-        actual = maxDepth(root)
-        self.assertEqual(actual, 3)

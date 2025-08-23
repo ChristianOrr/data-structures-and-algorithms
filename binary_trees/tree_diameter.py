@@ -27,9 +27,6 @@ Sample Output
 // first node and the last node
 // of this tree's longest path.
 """
-import unittest
-
-
 class BinaryTree:
     def __init__(self, value, left=None, right=None):
         self.value = value
@@ -37,7 +34,7 @@ class BinaryTree:
         self.right = right
 
 
-def binaryTreeDiameter(tree):
+def binary_tree_diameter_solution_1(tree):
     _, diam = backtrack(tree)
     return diam
 
@@ -61,19 +58,3 @@ def backtrack(node, max_diam=0):
     else:
         return right_length, max_diam
 
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        root = BinaryTree(1)
-        root.left = BinaryTree(3)
-        root.left.left = BinaryTree(7)
-        root.left.left.left = BinaryTree(8)
-        root.left.left.left.left = BinaryTree(9)
-        root.left.right = BinaryTree(4)
-        root.left.right.right = BinaryTree(5)
-        root.left.right.right.right = BinaryTree(6)
-        root.right = BinaryTree(2)
-        expected = 6
-        actual = binaryTreeDiameter(root)
-        self.assertEqual(actual, expected)

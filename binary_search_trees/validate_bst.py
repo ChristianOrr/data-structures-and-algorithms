@@ -23,9 +23,6 @@ tree =   10
 Sample Output
 true
 """
-import unittest
-
-
 # This is an input class. Do not edit.
 class BST:
     def __init__(self, value):
@@ -34,7 +31,7 @@ class BST:
         self.right = None
 
 
-def validateBst(tree, max_left=None, min_right=None):
+def validate_bst(tree, max_left=None, min_right=None):
     if max_left is None:
         left_range = [-float("inf"), tree.value]
     else:
@@ -47,7 +44,7 @@ def validateBst(tree, max_left=None, min_right=None):
     is_left_valid = True
     is_right_valid = True
     if tree.left is not None:
-        is_left_valid = validateBst(
+        is_left_valid = validate_bst(
             tree.left,
             max_left=max_left,
             min_right=min(x for x in [min_right, tree.value] if x is not None)
@@ -56,7 +53,7 @@ def validateBst(tree, max_left=None, min_right=None):
         left_in_range = left_range[0] <= tree.left.value < left_range[1]
         is_left_valid = is_left_valid and left_in_range
     if tree.right is not None:
-        is_right_valid = validateBst(
+        is_right_valid = validate_bst(
             tree.right,
             max_left=max(x for x in [max_left, tree.value] if x is not None),
             min_right=min_right
@@ -67,16 +64,3 @@ def validateBst(tree, max_left=None, min_right=None):
 
     return is_left_valid and is_right_valid
 
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        root = BST(10)
-        root.left = BST(5)
-        root.left.left = BST(2)
-        root.left.left.left = BST(1)
-        root.left.right = BST(5)
-        root.right = BST(15)
-        root.right.left = BST(13)
-        root.right.left.right = BST(14)
-        root.right.right = BST(22)
-        self.assertEqual(validateBst(root), True)

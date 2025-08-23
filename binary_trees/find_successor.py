@@ -29,9 +29,6 @@ Sample Output
 // 6 -> 4 -> 2 -> 5 -> 1 -> 3
 // 1 comes immediately after 5.
 """
-import unittest
-
-
 class BinaryTree:
     def __init__(self, value, left=None, right=None, parent=None):
         self.value = value
@@ -40,7 +37,7 @@ class BinaryTree:
         self.parent = parent
 
 # Solution 1
-def findSuccessor(tree, node):
+def find_successor_solution_1(tree, node):
     successor, _ = backtrack(tree, node)
     return successor
 
@@ -66,25 +63,25 @@ def backtrack(tree, node):
     else:
         return None, next_parent
 
-#
-# # Solution 2
-# def findSuccessor(tree, node):
-#     if tree is None:
-#         return None
-#
-#     left_value = findSuccessor(tree.left, node)
-#     if left_value is not None:
-#         return left_value
-#
-#     if tree.value == node.value:
-#         leftmost = find_leftmost_node(tree.right)
-#         if leftmost is not None:
-#             return leftmost
-#         else:
-#             return find_leftmost_parent(node.parent)
-#
-#     right_value = findSuccessor(tree.right, node)
-#     return right_value
+
+# Solution 2
+def find_successor_solution_2(tree, node):
+    if tree is None:
+        return None
+
+    left_value = find_successor_solution_2(tree.left, node)
+    if left_value is not None:
+        return left_value
+
+    if tree.value == node.value:
+        leftmost = find_leftmost_node(tree.right)
+        if leftmost is not None:
+            return leftmost
+        else:
+            return find_leftmost_parent(node.parent)
+
+    right_value = find_successor_solution_2(tree.right, node)
+    return right_value
 
 
 
@@ -107,40 +104,3 @@ def find_leftmost_node(tree):
         return tree
     else:
         return leftmost
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        root = BinaryTree(1)
-        root.left = BinaryTree(2)
-        root.left.parent = root
-        root.right = BinaryTree(3)
-        root.right.parent = root
-        root.left.left = BinaryTree(4)
-        root.left.left.parent = root.left
-        root.left.right = BinaryTree(5)
-        root.left.right.parent = root.left
-        root.left.left.left = BinaryTree(6)
-        root.left.left.left.parent = root.left.left
-        node = root.left.right
-        expected = root
-        actual = findSuccessor(root, node)
-        self.assertEqual(actual, expected)
-
-    # def test_2(self):
-    #     root = BinaryTree(1)
-    #     root.left = BinaryTree(2)
-    #     root.left.parent = root
-    #     root.right = BinaryTree(3)
-    #     root.right.parent = root
-    #     root.right.left = BinaryTree(6)
-    #     root.right.left.parent = root.right
-    #     root.right.right = BinaryTree(7)
-    #     root.right.right.parent = root.right
-    #     root.left.left = BinaryTree(4)
-    #     root.left.left.parent = root.left
-    #     root.left.right = BinaryTree(5)
-    #     root.left.right.parent = root.left
-    #     node = root.left.right
-    #     expected = root
-    #     actual = findSuccessor(root, node)
-    #     self.assertEqual(actual, expected)
