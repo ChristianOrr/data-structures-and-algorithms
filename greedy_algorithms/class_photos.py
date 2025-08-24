@@ -31,11 +31,8 @@ Loop through the length of the array and check if the back row student is greate
 if it isn't then return False.
 Return True if the loop completes without finding a failure case.
 """
-import unittest
-
-
 # Solution 1
-def classPhotos(redShirtHeights, blueShirtHeights):
+def class_photos_1(redShirtHeights, blueShirtHeights):
     redShirtHeights.sort()
     blueShirtHeights.sort()
 
@@ -55,25 +52,3 @@ def classPhotos(redShirtHeights, blueShirtHeights):
 
     return True
 
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        redShirtHeights = [5, 8, 1, 3, 4]
-        blueShirtHeights = [6, 9, 2, 4, 5]
-        expected = True
-        actual = classPhotos(redShirtHeights, blueShirtHeights)
-        self.assertEqual(actual, expected)
-
-    def test_2(self):
-        redShirtHeights = [6, 9, 2, 4, 5, 1]
-        blueShirtHeights = [5, 8, 1, 3, 4, 9]
-        expected = False
-        actual = classPhotos(redShirtHeights, blueShirtHeights)
-        self.assertEqual(actual, expected)
-
-    def test_3(self):
-        redShirtHeights = [5, 4]
-        blueShirtHeights = [5, 6]
-        expected = True
-        actual = classPhotos(redShirtHeights, blueShirtHeights)
-        self.assertEqual(actual, expected)

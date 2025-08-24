@@ -39,10 +39,7 @@ Sample Output
 //   {1, 3}
 // }
 """
-import unittest
-
-
-def taskAssignment(k, tasks):
+def task_assignment_1(k, tasks):
     sorted_indexes = sorted(range(len(tasks)), key=lambda i: tasks[i])
     indice_pairs = set()
 
@@ -53,27 +50,3 @@ def taskAssignment(k, tasks):
     return indice_pairs
 
 
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        k = 3
-        tasks = [1, 3, 5, 3, 1, 4]
-        expected1 = set([frozenset([4, 2]), frozenset([0, 5]), frozenset([3, 1])])
-        expected2 = set([frozenset([3, 1]), frozenset([5, 4]), frozenset([2, 0])])
-        actual = taskAssignment(k, tasks)
-        self.assertTrue(actual == expected1 or actual == expected2)
-
-    def test_2(self):
-        k = 1
-        tasks = [3, 5]
-        expected1 = set([frozenset([0, 1])])
-        actual = taskAssignment(k, tasks)
-        self.assertTrue(actual == expected1)
-
-    def test_3(self):
-        k = 5
-        tasks = [3, 7, 5, 4, 4, 3, 6, 8, 3, 3]
-        expected1 = set([frozenset([4, 3]), frozenset([2, 9]), frozenset([6, 8]), frozenset([1, 5]), frozenset([7, 0])])
-        expected2 = set([frozenset([9, 7]), frozenset([8, 1]), frozenset([5, 6]), frozenset([0, 2]), frozenset([4, 3])])
-        actual = taskAssignment(k, tasks)
-        self.assertTrue(actual == expected1 or actual == expected2)

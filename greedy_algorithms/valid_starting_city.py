@@ -30,11 +30,8 @@ mpg = 10
 Sample Output
 4
 """
-import unittest
-from itertools import accumulate
 
-
-def validStartingCity(distances, fuel, mpg):
+def valid_starting_city_1(distances, fuel, mpg):
     miles_left = 0
     min_miles_left = 0
     start_city_index = 0
@@ -49,45 +46,3 @@ def validStartingCity(distances, fuel, mpg):
     return start_city_index
 
 
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        distances = [5, 25, 15, 10, 15]
-        fuel = [1, 2, 1, 0, 3]
-        mpg = 10
-        expected = 4
-        actual = validStartingCity(distances, fuel, mpg)
-        self.assertEqual(actual, expected)
-
-    def test_2(self):
-        distances = [5, 20, 20, 10, 15]
-        fuel = [1, 0, 3, 0, 3]
-        mpg = 10
-        expected = 2
-        actual = validStartingCity(distances, fuel, mpg)
-        self.assertEqual(actual, expected)
-
-    def test_3(self):
-        distances = [5, 2, 3]
-        fuel = [1, 0, 1]
-        mpg = 5
-        expected = 2
-        actual = validStartingCity(distances, fuel, mpg)
-        self.assertEqual(actual, expected)
-
-    def test_4(self):
-        distances = [1, 3, 10, 6, 7, 7, 2, 4]
-        fuel = [1, 1, 1, 1, 1, 1, 1, 1]
-        mpg = 5
-        expected = 6
-        actual = validStartingCity(distances, fuel, mpg)
-        self.assertEqual(actual, expected)
-
-    def test_5(self):
-        distances = [30, 40, 10, 10, 17, 13, 50, 30, 10, 40]
-        fuel = [1, 2, 0, 1, 1, 0, 3, 1, 0, 1]
-        mpg = 25
-        expected = 1
-        actual = validStartingCity(distances, fuel, mpg)
-        self.assertEqual(actual, expected)

@@ -38,11 +38,8 @@ Iterate over the array and add num_queries_left * current_waiting_time to total_
 Return the total_waiting_time after the loop.
 
 """
-import unittest
-
-
 # Solution 1
-def minimumWaitingTime(queries):
+def minimum_waiting_time_1(queries):
     queries.sort()
     queries.pop(-1)
 
@@ -52,7 +49,7 @@ def minimumWaitingTime(queries):
 
 
 # Solution 2
-def minimumWaitingTime(queries):
+def minimum_waiting_time_2(queries):
     queries.sort()
     total_waiting_time = 0
     queries_left = len(queries) - 1
@@ -63,23 +60,3 @@ def minimumWaitingTime(queries):
 
     return total_waiting_time
 
-
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        queries = [3, 2, 1, 2, 6]
-        expected = 17
-        actual = minimumWaitingTime(queries)
-        self.assertEqual(actual, expected)
-
-    def test_2(self):
-        queries = [2, 1, 1, 1]
-        expected = 6
-        actual = minimumWaitingTime(queries)
-        self.assertEqual(actual, expected)
-
-    def test_3(self):
-        queries = [9]
-        expected = 0
-        actual = minimumWaitingTime(queries)
-        self.assertEqual(actual, expected)

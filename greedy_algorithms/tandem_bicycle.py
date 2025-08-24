@@ -30,10 +30,7 @@ fastest = true
 Sample Output
 32
 """
-import unittest
-
-
-def tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest):
+def tandem_bicycle_1(redShirtSpeeds, blueShirtSpeeds, fastest):
     redShirtSpeeds.sort()
     blueShirtSpeeds.sort(reverse=fastest)
     max_speeds = []
@@ -45,36 +42,3 @@ def tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest):
     return sum(max_speeds)
 
 
-
-class TestProgram(unittest.TestCase):
-    def test_1(self):
-        redShirtSpeeds = [5, 5, 3, 9, 2]
-        blueShirtSpeeds = [3, 6, 7, 2, 1]
-        fastest = True
-        expected = 32
-        actual = tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest)
-        self.assertEqual(actual, expected)
-
-    def test_2(self):
-        redShirtSpeeds = [9]
-        blueShirtSpeeds = [1]
-        fastest = True
-        expected = 9
-        actual = tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest)
-        self.assertEqual(actual, expected)
-
-    def test_3(self):
-        redShirtSpeeds = [5, 4, 3, 2, 1]
-        blueShirtSpeeds = [1, 2, 3, 4, 5]
-        fastest = False
-        expected = 15
-        actual = tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest)
-        self.assertEqual(actual, expected)
-
-    def test_4(self):
-        redShirtSpeeds = [5, 4, 3, 2, 1]
-        blueShirtSpeeds = [1, 2, 3, 4, 5]
-        fastest = True
-        expected = 21
-        actual = tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest)
-        self.assertEqual(actual, expected)
