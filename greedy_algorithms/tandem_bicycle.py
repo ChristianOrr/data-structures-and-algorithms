@@ -1,10 +1,10 @@
 """
-easy
+Easy
 
 A tandem bicycle is a bicycle that's operated by two people: person A and person B.
 Both people pedal the bicycle, but the person that pedals faster dictates the speed of the bicycle.
 So if person A pedals at a speed of 5, and person B pedals at a speed of 4,
-the tandem bicycle moves at a speed of 5 (i.e., tandemSpeed = max(speedA, speedB)).
+the tandem bicycle moves at a speed of 5 (i.e., tandem_speed = max(speed_a, speed_b)).
 
 You're given two lists of positive integers:
 one that contains the speeds of riders wearing red shirts and
@@ -30,15 +30,19 @@ fastest = true
 Sample Output
 32
 """
-def tandem_bicycle_1(redShirtSpeeds, blueShirtSpeeds, fastest):
-    redShirtSpeeds.sort()
-    blueShirtSpeeds.sort(reverse=fastest)
-    max_speeds = []
 
-    for i in range(len(redShirtSpeeds)):
-        max_speed = max(redShirtSpeeds[i], blueShirtSpeeds[i])
-        max_speeds.append(max_speed)
+def tandem_bicycle_1(red_shirt_speeds, blue_shirt_speeds, fastest):
+    if fastest:
+        sorted_red = sorted(red_shirt_speeds)
+        sorted_blue = sorted(blue_shirt_speeds, reverse=True)
+    else:
+        sorted_red = sorted(red_shirt_speeds)
+        sorted_blue = sorted(blue_shirt_speeds)
 
-    return sum(max_speeds)
+    total = 0
+    for red, blue in zip(sorted_red, sorted_blue):
+        total += max(red, blue)
+
+    return total
 
 

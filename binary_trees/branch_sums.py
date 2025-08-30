@@ -1,5 +1,5 @@
 """
-easy
+Easy
 
 Write a function that takes in a Binary Tree and returns a list of its
 branch sums ordered from leftmost branch sum to rightmost branch sum.
@@ -35,44 +35,24 @@ add the current value to the running sum, then append the sum to the output arra
 Pass through the output array and running sum to the left and right nodes if they are not None.
 Return the output array at the end.
 """
-class BinaryTree:
-    def __init__(self, value):
-        self.value = value
-        self.left = None
-        self.right = None
+# class BinaryTree:
+#     def __init__(self, value):
+#         self.value = value
+#         self.left = None
+#         self.right = None
 
 
-def branch_sums_solution_1(root):
-    output = []
-    dfs(root, 0, output)
-    return output
+def branch_sums_solution_1(root, branch_sums=[], branch_sum=0):
+    branch_sum += root.value
 
-def dfs(node, running_sum, output):
-    running_sum += node.value
-    if node.left is None and node.right is None:
-        output.append(running_sum)
-        return
+    if root.left is None and root.right is None:
+        branch_sums.append(branch_sum)
+        return branch_sums
 
-    if node.left is not None:
-        dfs(node.left, running_sum, output)
-    if node.right is not None:
-        dfs(node.right, running_sum, output)
+    if root.left is not None:
+        branch_sums = branch_sums_solution_1(root.left, branch_sums, branch_sum)
 
-
-class BinaryTree(BinaryTree):
-    def insert(self, values, i=0):
-        if i >= len(values):
-            return
-        queue = [self]
-        while len(queue) > 0:
-            current = queue.pop(0)
-            if current.left is None:
-                current.left = BinaryTree(values[i])
-                break
-            queue.append(current.left)
-            if current.right is None:
-                current.right = BinaryTree(values[i])
-                break
-            queue.append(current.right)
-        self.insert(values, i + 1)
-        return self
+    if root.right is not None:
+        branch_sums = branch_sums_solution_1(root.right, branch_sums, branch_sum)
+    
+    return branch_sums

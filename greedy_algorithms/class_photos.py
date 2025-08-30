@@ -32,23 +32,21 @@ if it isn't then return False.
 Return True if the loop completes without finding a failure case.
 """
 # Solution 1
-def class_photos_1(redShirtHeights, blueShirtHeights):
-    redShirtHeights.sort()
-    blueShirtHeights.sort()
+def class_photos_1(red_shirt_heights, blue_shirt_heights):
+    if len(red_shirt_heights) != len(blue_shirt_heights):
+        return False
+    sorted_red = sorted(red_shirt_heights)
+    sorted_blue = sorted(blue_shirt_heights)
 
-    if redShirtHeights[0] > blueShirtHeights[0]:
-        top_row = redShirtHeights
-        bottom_row = blueShirtHeights
+    if sorted_red[0] > sorted_blue[0]:
+        taller_shirts = sorted_red
+        shorter_shirts = sorted_blue
     else:
-        top_row = blueShirtHeights
-        bottom_row = redShirtHeights
+        taller_shirts = sorted_blue
+        shorter_shirts = sorted_red
 
-    del blueShirtHeights
-    del redShirtHeights
-
-    for i in range(len(top_row)):
-        if top_row[i] <= bottom_row[i]:
+    for short_shirt, tall_shirt in zip(shorter_shirts, taller_shirts):
+        if short_shirt >= tall_shirt:
             return False
-
+        
     return True
-
