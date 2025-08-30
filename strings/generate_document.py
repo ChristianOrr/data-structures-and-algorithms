@@ -21,13 +21,14 @@ document = "Generate Document!"
 Sample Output
 true
 """
+from collections import Counter
+
 
 def find_char(chars, char):
     for j, single_char in enumerate(chars):
         if char == single_char:
             return j
     return -1
-
 
 def generate_document_1(characters, document):
     characters = list(characters)
@@ -43,3 +44,13 @@ def generate_document_1(characters, document):
 
     return True
 
+
+def generate_document_2(characters, document):
+    char_counts = Counter(characters)
+    doc_counts = Counter(document)
+
+    for doc_char, doc_count in doc_counts.items():
+        if doc_count > char_counts.get(doc_char, 0):
+            return False
+        
+    return True

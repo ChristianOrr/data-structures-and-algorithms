@@ -42,8 +42,6 @@ After the loop return the array.
 #     def depthFirstSearch(self, array):
 #         pass
 
-
-# Solution 1
 class Node:
     def __init__(self, name):
         self.children = []
@@ -53,9 +51,8 @@ class Node:
         self.children.append(Node(name))
         return self
 
-    def depthFirstSearch(self, array):
+    def depth_first_search(self, array):
         array.append(self.name)
         for child in self.children:
-            child.depthFirstSearch(array)
+            child.depth_first_search(array)
         return array
-

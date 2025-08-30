@@ -41,4 +41,3 @@ def validate_subsequence_solution_1(array, sequence):
             seq_index += 1
         array_index += 1
     return seq_index == len(sequence)
-# Tests moved to tests/arrays/test_validate_subsequence.py

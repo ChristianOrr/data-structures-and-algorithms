@@ -15,4 +15,4 @@ def test_1(fn):
     graph.children[2].addChild("G").addChild("H")
     graph.children[0].children[1].addChild("I").addChild("J")
     graph.children[2].children[0].addChild("K")
-    assert graph.breadthFirstSearch([]) == ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
+    assert graph.breadth_first_search([]) == ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]

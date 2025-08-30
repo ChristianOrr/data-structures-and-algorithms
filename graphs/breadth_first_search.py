@@ -29,7 +29,7 @@ class Node:
         self.children.append(Node(name))
         return self
 
-    def breadthFirstSearch(self, array):
+    def breadth_first_search(self, array):
         queue = [self]
         while len(queue) > 0:
             current = queue.pop(0)
@@ -37,5 +37,4 @@ class Node:
             for child in current.children:
                 queue.append(child)
         return array
-
 
