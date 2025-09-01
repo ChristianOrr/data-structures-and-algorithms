@@ -1,9 +1,12 @@
 import pytest
 
-from arrays.sorted_squared_array import sorted_squared_array_solution_1
+from arrays.sorted_squared_array import (
+    sorted_squared_array_solution_1,
+    sorted_squared_array_solution_2
+)
 
 
-implementations = [sorted_squared_array_solution_1]
+implementations = [sorted_squared_array_solution_1, sorted_squared_array_solution_2]
 
 
 @pytest.mark.parametrize("fn", implementations)

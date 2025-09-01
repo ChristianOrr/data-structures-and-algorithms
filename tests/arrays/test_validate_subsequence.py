@@ -1,9 +1,12 @@
 import pytest
 
-from arrays.validate_subsequence import validate_subsequence_solution_1
+from arrays.validate_subsequence import (
+    validate_subsequence_solution_1,
+    validate_subsequence_solution_2
+)
 
 
-implementations = [validate_subsequence_solution_1]
+implementations = [validate_subsequence_solution_1, validate_subsequence_solution_2]
 
 
 @pytest.mark.parametrize("fn", implementations)

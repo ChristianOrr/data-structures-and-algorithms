@@ -1,5 +1,5 @@
 """
-easy
+Easy
 
 Write a function that takes in a non-empty array of integers that are sorted in ascending order and
 returns a new array of the same length with the squares of the original integers also sorted in ascending order.
@@ -24,8 +24,14 @@ then add its square to the output array, starting from the back.
 Return the output array after the loop.
 
 """
-# Solution 
+# Solution 1
 def sorted_squared_array_solution_1(array):
+    squared_array = [integer**2 for integer in array]
+    return sorted(squared_array)
+
+
+# Solution 2
+def sorted_squared_array_solution_2(array):
 
     output = [0 for _ in range(len(array))]
     left = 0

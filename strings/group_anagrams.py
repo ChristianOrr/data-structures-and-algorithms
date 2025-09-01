@@ -1,5 +1,5 @@
 """
-medium
+Medium
 
 Write a function that takes in an array of strings and groups anagrams together.
 

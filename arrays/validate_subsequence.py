@@ -1,5 +1,5 @@
 """
-easy
+Easy
 
 Given two non-empty arrays of integers, write a function that determines whether the
 second array is a subsequence of the first one.
@@ -20,7 +20,7 @@ Time Complexity: O(n), space complexity: O(1)
 Strategy:
 Loop through the array, and keep a counter for the sequence.
 When a match is found increase the counter,
-then check it the counter is the length of the sequence, return True if it is.
+then check if the counter is the length of the sequence, return True if it is.
 At the end of the loop return True if counter == len(sequence), False otherwise.
 
 Solution 2
@@ -33,6 +33,17 @@ After loop is complete return True if counter == len(sequence), False otherwise.
 """
 # Solution 1
 def validate_subsequence_solution_1(array, sequence):
+    seq_counter = 0
+    for element in array:
+        if element == sequence[seq_counter]:
+            seq_counter += 1
+        if seq_counter >= len(sequence):
+            return True
+    return seq_counter == len(sequence)
+
+
+# Solution 2
+def validate_subsequence_solution_2(array, sequence):
     array_index = 0
     seq_index = 0
 
